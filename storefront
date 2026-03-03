@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        main {
-            background-color: #eaf2f8;
-        }
+        main { background-color: #eaf2f8; padding: 15px; }
+        header { padding: 10px; }
+        nav { padding: 8px; }
+        nav a { margin-right: 10px; }
+        footer { padding: 10px; }
+        article img { display: block; margin-bottom: 15px; }
     </style>
 </head>
 <body>
@@ -21,10 +24,11 @@
     </div>
 
     <nav>
-        <a href="#">Home</a>
+        <a href="storefront.html">Home</a>
         <a href="#">About Us</a>
         <a href="#">Shopping Cart</a>
         <a href="#">Products</a>
+        <a href="signup.html">Sign Up</a>
         <a href="#">Login</a>
         <a href="#">Contact Us</a>
     </nav>
@@ -46,7 +50,7 @@
     </section>
 </main>
 
-<aside>
+<aside style="padding: 10px;">
     <p style="color:#1f618d;">Special Deals</p>
 </aside>
 
