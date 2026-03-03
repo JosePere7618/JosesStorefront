@@ -1,62 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sign Up</title>
+    <title>Sign Up</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header>
-  <div>
-    <img src="logo.png" alt="Joses Store Logo" width="100" style="border:1px solid #2c3e50;">
     <h1>Joses Store</h1>
-  </div>
-
-  <nav>
-    <a href="storefront.html">Home</a>
-    <a href="signup.html">Sign Up</a>
-  </nav>
+    <nav>
+        <a href="storefront.html">Home</a>
+        <a href="signup.html">Sign Up</a>
+    </nav>
 </header>
 
-<main class="container py-4">
-  <h2 class="mb-3">User Sign Up</h2>
+<main class="container mt-4">
 
-  <div class="card p-3" style="max-width: 500px;">
-    <form>
-      <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" required>
-      </div>
+    <h2>User Sign Up</h2>
 
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="joe@test.com" required>
-      </div>
+    <div class="card p-3" style="max-width:400px;">
 
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" required>
-      </div>
+        <form onsubmit="return checkForm();">
 
-      <div class="mb-3">
-        <label for="confirmPassword" class="form-label">Confirm Password</label>
-        <input type="password" class="form-control" id="confirmPassword" required>
-      </div>
+            <div class="mb-3">
+                <label>Username</label>
+                <input type="text" class="form-control" id="username">
+                <div id="userMsg" style="color:red;"></div>
+            </div>
 
-      <button type="submit" class="btn btn-primary">Create Account</button>
-    </form>
-  </div>
+            <div class="mb-3">
+                <label>Email</label>
+                <input type="text" class="form-control" id="email">
+                <div id="emailMsg" style="color:red;"></div>
+            </div>
+
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="password" class="form-control" id="password">
+                <div id="passMsg" style="color:red;"></div>
+            </div>
+
+            <div class="mb-3">
+                <label>Confirm Password</label>
+                <input type="password" class="form-control" id="confirm">
+                <div id="confirmMsg" style="color:red;"></div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create Account</button>
+
+        </form>
+
+    </div>
+
 </main>
 
 <footer>
-  <a href="#">Terms of Use</a>
-  <a href="#">Privacy Policy</a>
-  <a href="#">Copyright</a>
+    <a href="#">Terms of Use</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Copyright</a>
 </footer>
+
+
+<script>
+
+function checkForm() {
+
+    var good = true;
+
+    var username = document.getElementById("username");
+    var email = document.getElementById("email");
+    var password = document.getElementById("password");
+    var confirm = document.getElementById("confirm");
+
+    document.getElementById("userMsg").innerHTML = "";
+    document.getElementById("emailMsg").innerHTML = "";
+    document.getElementById("passMsg").innerHTML = "";
+    document.getElementById("confirmMsg").innerHTML = "";
+
+    username.style.borderColor = "";
+    email.style.borderColor = "";
+    password.style.borderColor = "";
+    confirm.style.borderColor = "";
+
+    if (username.value == "") {
+        document.getElementById("userMsg").innerHTML = "Username is required";
+        username.style.borderColor = "red";
+        good = false;
+    }
+
+    if (email.value == "") {
+        document.getElementById("emailMsg").innerHTML = "Email is required";
+        email.style.borderColor = "red";
+        good = false;
+    }
+    else if (email.value.indexOf("@") == -1 || email.value.indexOf(".") == -1) {
+        document.getElementById("emailMsg").innerHTML = "Enter a valid email like joe@test.com";
+        email.style.borderColor = "red";
+        good = false;
+    }
+
+    if (password.value == "") {
+        document.getElementById("passMsg").innerHTML = "Password is required";
+        password.style.borderColor = "red";
+        good = false;
+    }
+
+    if (confirm.value == "") {
+        document.getElementById("confirmMsg").innerHTML = "Confirm password";
+        confirm.style.borderColor = "red";
+        good = false;
+    }
+
+    if (password.value != confirm.value && password.value != "" && confirm.value != "") {
+        document.getElementById("confirmMsg").innerHTML = "Passwords do not match";
+        password.style.borderColor = "red";
+        confirm.style.borderColor = "red";
+        good = false;
+    }
+
+    return good;
+}
+
+</script>
 
 </body>
 </html>
